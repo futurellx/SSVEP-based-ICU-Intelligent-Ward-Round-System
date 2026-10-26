@@ -1,0 +1,3 @@
+# Windows x64, Python 3.10
+-r requirements-runtime.txt
+-r requirements-patient.txt

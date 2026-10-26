@@ -1,0 +1,14 @@
+# PsychoPy 2022 retains MovieStim3, used by the existing patient client.
+# Install together with requirements-runtime.txt so NumPy stays below 1.24.
+PsychoPy==2022.2.5
+pyglet==1.5.27
+moviepy==1.0.3
+imageio==2.31.6
+Pillow==9.5.0
+opencv-python==4.10.0.84
+ffpyplayer==4.5.1
+pyo==1.0.5
+psychtoolbox==3.0.19.14
+tables==3.8.0
+wxPython==4.2.1
+python-bidi==0.4.2
