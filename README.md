@@ -22,25 +22,6 @@
 
 量表相关界面覆盖焦虑、抑郁、睡眠、健康和认知问卷，具体题目、选项及分值依赖业务数据库中的配置。
 
-## 系统架构
-
-```mermaid
-flowchart LR
-    Doctor["医护端 · PyQt5"] -->|"问题、模式与任务指令"| Server["服务端 · Flask-SocketIO"]
-    Server -->|"问题与刺激控制"| Patient["患者端 · PsychoPy"]
-    Patient -->|"视觉刺激"| User["患者注视目标"]
-    User -->|"脑电信号"| Device["脑电设备"]
-    Device -->|"串口二进制数据"| Acquisition["采集端 · PySerial / PyQt5"]
-    Acquisition -->|"分块 EEG"| Server
-    Server <-->|"算法调用接口"| Algorithm["外部提供的算法模块 · 未公开"]
-    Server -->|"识别结果"| Doctor
-    Doctor -->|"结果反馈，经服务端转发"| Server
-    Doctor <-->|"查询与记录"| Database[("SQLite · 需另行准备")]
-```
-
-医护端负责业务操作，患者端负责刺激呈现，采集端负责设备数据接入，服务端负责消息协调与识别任务调度。各端通过 Socket.IO 事件通信，识别结果携带任务信息，便于与当前业务轮次对应。
-
-本仓库的通信实现为 Python Socket.IO；患者刺激使用 PsychoPy，医护界面使用 PyQt5。
 
 ## 典型交互流程
 
